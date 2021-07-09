@@ -1,0 +1,67 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'white';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var range = 10;
+
+    var randomX;
+    var randomY;  
+
+    function drawCircle(x, y, range, color) {
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, range, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function clearScreen() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+
+    function drawTarget(x, y) {
+
+        drawCircle(x, y, range+20, 'red');
+        drawCircle(x, y, range+10, 'white');
+        drawCircle(x, y, range, 'red');
+    }
+
+    function randomPos(maxRange) {
+
+        return Math.floor(Math.random() * maxRange);
+    }
+
+    function reloadScreen() {
+
+        clearScreen();
+        randomX = randomPos(600);
+        randomY = randomPos(400);
+        drawTarget(randomX, randomY)
+    }
+
+    setInterval(reloadScreen, 1000);
+
+    function shot(event) {
+
+        var x = event.pageX - tela.offsetLeft;
+        var y = event.pageY - tela.offsetTop;
+
+        if((x > randomX - range) 
+        && (x < randomX + range) 
+        && (y > randomY - range) 
+        && (y < randomY + range)) {
+            alert('Acertou!');
+        }
+    }
+
+    tela.onlick = shot;
+
+</script>

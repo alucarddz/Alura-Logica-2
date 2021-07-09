@@ -1,0 +1,115 @@
+<meta charset="utf-8">
+<canvas width="600"  height="400"> <canvas>
+
+<script>
+	
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+
+	function drawSquare(x, y, w, h, cor) {
+		pincel.fillStyle = cor;
+		pincel.fillRect(x, y, w, h);
+		pincel.fillStroke = 'black';
+		pincel.strokeRect(x, y, w, h);
+	}
+
+	function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2*3.14);
+        pincel.fill();
+    }
+
+    function desenhaFlor(x, y) {
+	    desenhaCirculo(x, y+20, 10, 'red');
+	    desenhaCirculo(x, y, 10, 'black');
+	    desenhaCirculo(x, y-20, 10, 'orange');
+	    desenhaCirculo(x-20, y, 10, 'yellow');
+	    desenhaCirculo(x+20, y, 10, 'blue');
+	}
+
+
+	function desenhaTexto(texto, x, y) {
+		pincel.font='20px Georgia';
+		pincel.fillStyle='black';
+		pincel.fillText(texto, x, y);
+	}
+
+/*
+	desenhaTexto("Qual é a fração?", 50, 30);
+
+	for(var x = 1; x < 150; x = x +50) {
+		drawSquare(x, 50, 50, 50, 'green');
+	}
+
+	drawSquare(150, 50, 50, 50, 'white');
+*/
+
+	function desenhaBarra(x, y, serie, cores, texto) {
+    	desenhaTexto(x, y - 10, texto);
+
+    	var somaAltura = 0;
+
+    	for(var i = 0; i < serie.length; i++){
+    		var altura = serie[i];
+    		drawSquare(x, y + somaAltura, 50, altura, cores[i]);
+    		somaAltura = somaAltura + altura;
+    	}
+    }
+
+    function desenhaEsquadro(xa, ya, xc, yc, cor){
+
+	    pincel.fillStyle = cor
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xa, yc);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+
+	    pincel.fillStyle = 'white'
+        pincel.beginPath();
+        pincel.moveTo((6*xa + xc)/7, (9*ya + 5*yc)/14);
+        pincel.lineTo((6*xa + xc)/7, (ya + 6*yc)/7);
+        pincel.lineTo((5*xa + 9*xc)/14, (ya + 6*yc)/7);
+        pincel.fill();
+
+    }
+
+    desenhaEsquadro(50, 50, 400, 400, 'black');
+
+
+
+
+    /*
+    desenhaTexto("2015", 50, 30);
+    desenhaTexto("2016", 150, 30);
+
+	var serie2015 = [50, 25, 20, 5];
+	var serie2016 = [65, 20, 13, 2];
+
+	var cores = ['blue', 'green', 'yellow', 'red'];
+
+	desenhaBarra(50, 50, serie2015, cores, '2015');
+	desenhaBarra(150, 50, serie2016, cores, '2016');
+
+	var caetanor = prompt("Você conhece o caetanor?");
+
+	if(caetanor == 'sim') {
+		alert("Muito bem, você conhece mais um membro gay e da antiga gerência do NOSSO ESTADO!");
+		alert("Não se preocupe, ele não é mais da gerência e não pode te banir!");
+		alert("A baderna está liberada! ");
+		alert("Dj a-a-a-a-a-a-a-a-a😁😁✌️✌️✌️✌️zeitona 🔊🔊🔊🔊puur👍👍👍👍hahahahaha 😃😂😃😂😃pu tch tch tchama pu tch tch tchama pu tch tch tcha🔛🔛 vambora😎😎😎 para✋✋🙅‍♂🙅‍♂🙅‍♂🚫🚫 de fala 🗣️🗣️que tu é minha namorrrrrrrrr🥰👩‍❤️‍👨👩‍❤️‍👩👨‍❤️‍👨👩‍❤️‍💋‍👨👩‍❤️‍💋‍👩👨‍❤️‍💋‍👨 divulga🔈🔈 no Twitter 🐥🐥🐥🐥que o dj azeitona 🎧🎧🎧amassa💥💥 falando pras novinha👩👩🤭 das casinha 🏠🏠que tu é minha namotututututu🥰👩‍❤️‍👨👩‍❤️‍👨 isso é fofoca🙅‍♂🙅‍♂🤫 não é prrrrrr🔈🔈🔈to tipo bielzoow comendo🍽️🍽️😏 todas danada🥵🥵😈😈😈 to tipo mc poussss😎😎😎 comendo🍽️🍽️🤭 todas danada 😈😈🥵👉👌não sei🤔🤔🤔 oq aconteceénocomplexx as novinha jogando a tutututu💥💥🎧🎧🔊🔊🔊😁😁👍👍👍👍👍👍👍")
+	}
+
+
+	site.takedown("https://classroom.google.com/"){
+		info.needed(cardnumber, cpf, backnumber, name, expdate, password);
+	}
+	*/
+	
+
+
+
+
+</script>
